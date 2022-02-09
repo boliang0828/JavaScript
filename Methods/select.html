@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <span></span>
+            <select name="" v-model="countryName" @change="change_select">
+                <option v-for="(item,index) in select" v-bind:value="item.carCompany">{{item.carCompany}}</option>
+            </select>
+            <select name="" v-model="cityName">
+                <option v-for="(item,index) in cityNames" v-bind:value="item">{{item}}</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                countryName: "",
+                cityName: "",
+                cityNames: [],
+                select: [
+                    {
+                        "carCompany": "南京风光建设综合开发公司",
+                        "carNumber": ["苏AXXXXX", "苏AXXXXX", "苏AXXXXX", "苏AXXXXX", "苏AXXXXX", "苏AXXXXX", "苏AXXXXX", "苏AXXXXX", "苏AXXXXX"],
+                    },
+                    {
+                        "carCompany": "南京历史城区保护建设集团",
+                        "carNumber": ["苏BXXXXX", "苏BXXXXX", "苏BXXXXX", "苏BXXXXX", "苏BXXXXX", "苏BXXXXX", "苏BXXXXX", "苏BXXXXX", "苏BXXXXX"],
+                    },
+                ]
+            },
+            methods: {
+                change_select() {
+                    console.log("---------")
+                    var that = this
+                    that.cityName = ''
+                    for (var k in that.select) {
+                        console.log(k)
+                        console.log(that.select[k].country)
+                        console.log(that.countryName)
+                        if (this.countryName == that.select[k].carCompany) {
+                            that.cityNames = that.select[k].carNumber
+                            console.log(that.cityNames)
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

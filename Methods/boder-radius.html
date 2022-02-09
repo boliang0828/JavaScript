@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border-radius</title>
+    <style>
+         div{
+         margin:50px;
+         display:inline-block;
+         width:100px;
+		 height:100px;
+         border:3px solid red;
+     	}
+         #circle{
+            border-radius: 50%;
+        }
+        #half-circle{
+            border-radius:50px 50px 0px 0px;
+            height:50px;
+        }
+        #sector{
+            border-radius: 50px 0px 0px 0px;
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div id='circle'></div>
+    <div id='half-circle'></div>
+    <div id='sector'></div>
+</body>
+</html>
