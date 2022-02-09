@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body></body>
+<script>
+    /* 
+    每个实例对象（object）都有一个私有属性（称之为 __proto__ ）指向它的构造函数的原型对象（prototype）。该原型对象也有一个自己的原型对象（__proto__），
+    层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。
+    */
+    // 构造函数
+    /*  function Person(name, age) {
+         // 构造函数的属性
+         this.name = name
+         this.age = age
+         // 构造函数的方法
+         this.eat = function () {
+             console.log('这是Person构造函数的方法');
+         }
+     }
+     // 添加共享的属性
+     Person.prototype.sex = '男'
+     // //添加共享的方法
+     // Person.prototype.sayHi = function (params) {
+     //     console.log('这是Person原型上的方法。');
+     // }
+     // 构造函数 
+     function Student(){
+
+     }
+     Student.prototype.sayHi = function(){
+         console.log('这是Student原型上的方法。');
+     }
+     Student.prototype = new Person() // 改变了指向
+     let stu = new Student();
+     stu.eat();    // 这是Person构造函数的方法
+     stu.sayHi();  // Uncaught TypeError: stu.sayHi is not a function   */
+
+    // let per = new Person('张三', 18);
+    // per.sayHi();
+
+    // console.log(per.__proto__ == Person.prototype); // true
+    // console.log(per.__proto__,'per的原型指向');
+    // console.log(Person.prototype,'Person的原型');
+
+    // console.dir(Person.prototype); // Object
+
+    // 构造函数Person的prototype = 实例per的__proto__
+    /* 
+    完整的原型链
+    per的__proto__  ——> Person.prototype.__proto__  ——> Object.prototype.__proto__ ——> null
+    */
+
+    function doSomething() {}
+    doSomething.prototype.week = 'Saturday'
+    //  构造函数实例化
+    let example = new doSomething();
+    example.prop = 'example value'
+    console.log(example.a);
+
+</script>
+
+</html>

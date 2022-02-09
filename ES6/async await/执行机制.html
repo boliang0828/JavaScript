@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js的执行机制</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 第一段测试代码
+    // setTimeout(function () {
+    //     console.log('定时器开始啦')
+    // });
+
+    // new Promise(function (resolve) {
+    //     console.log('马上执行for循环啦');
+    //     for (var i = 0; i < 10000; i++) {
+    //         i == 99 && resolve();
+    //     }
+    // }).then(function () {
+    //     console.log('执行then函数啦')
+    // });
+
+    // console.log('代码执行结束');
+// ---------------------------------------------------------------------------------------------------
+// setTimeout(function () {
+//     console.log('1')
+// });
+
+// new Promise(function (resolve) {
+//     console.log('2');
+//     resolve();
+// }).then(function () {
+//     console.log('3')
+// });
+
+// console.log('4');
+
+// 测试结果  2431
+
+// ---------------------------------------------------------------------------------------------------
+
+// 第二段测试代码 node中执行
+// console.log('1');
+
+// setTimeout(function () {
+    //     console.log('2');
+    //     process.nextTick(function () {
+        //         console.log('3');
+        //     })
+        //     new Promise(function (resolve) {
+            //         console.log('4');
+            //         resolve();
+            //     }).then(function () {
+                //         console.log('5')
+                //     })
+                // })
+                
+                // process.nextTick(function () {
+                    //     console.log('6');
+                    // })
+                    
+                    // new Promise(function (resolve) {
+                        //     console.log('7');
+                        //     resolve();
+                        // }).then(function () {
+                            //     console.log('8')
+                            // })
+                            
+                            // setTimeout(function () {
+                                //     console.log('9');
+                                //     process.nextTick(function () {
+                                    //         console.log('10');
+                                    //     })
+                                    //     new Promise(function (resolve) {
+                                        //         console.log('11');
+                                        //         resolve();
+                                        //     }).then(function () {
+                                            //         console.log('12')
+                                            //     })
+                                            // })
+// ---------------------------------------------------------------------------------------------------
+debugger
+async function async1() {
+    console.log("a");
+    const res = await async2();
+    console.log("b");
+}
+
+async function async2() {
+    console.log("c");
+    return 2;
+}
+
+console.log("d");
+
+setTimeout(() => {
+    console.log("e");
+}, 0);
+
+async1().then(res => {
+    console.log("f")
+})
+
+new Promise((resolve) => {
+    console.log("g");
+    resolve();
+}).then(() => {
+    console.log("h");
+});
+
+console.log("i");
+// * 输出结果：d a c g i b h f e 
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+.top{
+    margin-top: 20px;
+}
+.circle{
+    width: 100px;
+    height: 100px;
+    background-color: lightpink;
+}
+/* flex布局 */
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* margin 0 auto */
+.margin>.circle{
+    margin: 0 auto;
+}
+/* 定位 */
+.absolute{
+    position:relative;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}
+.absolute>.circle{
+    background-color: lightskyblue;
+    margin:auto;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}
